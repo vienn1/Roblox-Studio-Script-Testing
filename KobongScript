@@ -1,1 +1,46 @@
 
+
+---------------------------- Copy line ----------------------------
+
+local seat = script.Parent
+local smoke = seat:WaitForChild("Smoke")
+local fire = seat:WaitForChild("Fire")
+local uis = game:GetService("UserInputService")
+
+smoke.Enabled = false
+fire.Enabled = false
+
+local holding = false
+
+uis.InputBegan:Connect(function(input, gp)
+	if input.KeyCode == Enum.KeyCode.K and seat.Occupant then
+		holding = true
+		
+		task.wait(2)
+		
+		if holding then
+
+			smoke.Enabled = true
+			task.delay(5, function()
+				smoke.Enabled = false
+			end)
+			
+			task.wait(5)
+			if holding then
+				fire.Enabled = true
+			end
+		end
+	end
+end)
+
+uis.InputEnded:Connect(function(input, gp)
+	if input.KeyCode == Enum.KeyCode.K then
+		holding = false
+
+		smoke.Enabled = false
+		fire.Enabled = false
+	end
+end)
+
+---------------------------- Copy line ----------------------------
+
