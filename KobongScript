@@ -1,4 +1,10 @@
+Cara Kerja
 
+- Player duduk di Seat → tekan K.
+- Script tunggu 2 detik → kalau masih ditekan, nyalain Smoke.
+- Smoke jalan 5 detik → setelah itu otomatis mati.
+- Kalau K masih ditekan setelah Smoke, otomatis Fire nyala.
+- Kalau K dilepas kapan saja → Smoke & Fire langsung mati.
 
 ---------------------------- Copy line ----------------------------
 
