@@ -1,0 +1,35 @@
+
+local TweenService = game:GetService("TweenService")
+
+local tombol = script.Parent:WaitForChild("Tombol")
+local clickDetector = tombol:WaitForChild("ClickDetector")
+local bell = script.Parent:WaitForChild("BellSound")
+local pintuFolder = script.Parent:WaitForChild("Pintu")
+
+local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+
+local offsetKiri = Vector3.new(-2, 0, 0) -- pintu kiri geser ke kiri
+local offsetKanan = Vector3.new(2, 0, 0) -- pintu kanan geser ke kanan
+
+local function bukaSemuaPintu()
+	bell:Play() -- bunyi bell dulu
+	task.wait(1) -- delay 1 detik sebelum pintu buka
+	
+	for _, doorSet in pairs(pintuFolder:GetChildren()) do
+		local left = doorSet:FindFirstChild("LeftDoor")
+		local right = doorSet:FindFirstChild("RightDoor")
+		
+		if left and right then
+			local leftTween = TweenService:Create(left, tweenInfo, {Position = left.Position + offsetKiri})
+			local rightTween = TweenService:Create(right, tweenInfo, {Position = right.Position + offsetKanan})
+			leftTween:Play()
+			rightTween:Play()
+		end
+	end
+end
+
+clickDetector.MouseClick:Connect(function(player)
+	bukaSemuaPintu()
+end)
+
+-- Vienn1SystemScript
