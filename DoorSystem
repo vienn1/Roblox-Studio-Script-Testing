@@ -1,4 +1,6 @@
+NF Code
 
+---------------------------- Copy line ----------------------------
 local TweenService = game:GetService("TweenService")
 
 local tombol = script.Parent:WaitForChild("Tombol")
