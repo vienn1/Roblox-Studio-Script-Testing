@@ -19,19 +19,19 @@ fire.Enabled = false
 local holding = false
 
 uis.InputBegan:Connect(function(input, gp)
-	if input.KeyCode == Enum.KeyCode.K and seat.Occupant then
+	if input.KeyCode == Enum.KeyCode.E and seat.Occupant then
 		holding = true
 		
-		task.wait(2)
+		task.wait(1)
 		
 		if holding then
 
 			smoke.Enabled = true
-			task.delay(5, function()
+			task.delay(3, function()
 				smoke.Enabled = false
 			end)
 			
-			task.wait(5)
+			task.wait(2)
 			if holding then
 				fire.Enabled = true
 			end
